@@ -1,8 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Colore.Models
+﻿namespace Colore.Models
 {
-    public class SendEmailDto
+    public class Contato
     {
         public string Nome { get; set; }
         public string Email { get; set; }

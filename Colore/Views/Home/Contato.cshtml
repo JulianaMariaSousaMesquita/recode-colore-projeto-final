@@ -1,0 +1,46 @@
+﻿@model Contato
+@{
+    ViewData["Title"] = "Contato";
+} 
+<div class="contact1">
+	<h1 class="alert">@ViewBag.Message</h1>
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img src="~/images/sobre/contato.svg" alt="imagem">
+			</div>
+			<form asp-action="Contato" enctype="multipart/form-data" asp-anti-forgery="true" method="post" class="contact1-form validate-form" >
+				<span class="contact1-form-title">
+					CONTATO
+				</span>
+
+				<div class="wrap-input1 validate-input" data-validate = "Por favor, digite seu nome">
+					<input class="input1" type="text" asp-for="@Model.Nome" placeholder="Digite seu Nome">
+					<span class="shadow-input1"></span>
+				</div>
+				
+				<div class="wrap-input1 validate-input" data-validate = "Por favor, digite seu email: exemplo@gmail.com">
+					<input class="input1" type="text" asp-for="@Model.Email" placeholder="Digite seu Email">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Por favor,digite um assunto">
+					<input class="input1" type="text" asp-for="@Model.Assunto" placeholder="Digite o Assunto">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Por favor, digite sua mensagem">
+					<textarea class="input1" asp-for="@Model.Mensagem" placeholder="Escreva aqui sua mensagem"></textarea>
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="container-contact1-form-btn">
+					<button class="contact1-form-btn" type="submit" value="Send" >
+						<span>
+							Enviar
+							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
