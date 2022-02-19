@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Colore.Models;
+using Acessos.Empresa;
+using Acessos.Usuario;
 
 namespace Colore.Controllers
 {
@@ -54,7 +56,21 @@ namespace Colore.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,email,senha,imagem")] Acessos acessos)
+        public async Task<IActionResult> CreateEmpresa([Bind("id,email,senha,imagem,titulo,telefone,cnpj,endereco")] Empresa acessos)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(acessos);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(acessos);
+        }
+
+        // POST: Acessos/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateUsuario([Bind("id,email,senha,imagem")] Usuario acessos)
         {
             if (ModelState.IsValid)
             {
@@ -82,11 +98,42 @@ namespace Colore.Controllers
         }
 
         // POST: Acessos/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,email,senha,imagem")] Acessos acessos)
+        public async Task<IActionResult> EditEmpresa(int id, [Bind("id,email,senha,imagem,titulo,telefone,cnpj,endereco")] Empresa acessos)
+        {
+            if (id != acessos.id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(acessos);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AcessosExists(acessos.id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(acessos);
+        }
+
+        // POST: Acessos/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditUsuario(int id, [Bind("id,email,senha,imagem")] Usuario acessos)
         {
             if (id != acessos.id)
             {
