@@ -6,25 +6,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Colore.Models;
 
-namespace Colore.Models
+namespace Colore.Controllers
 {
-    public class FormacaoController : Controller
+    public class VagaController : Controller
     {
         private readonly Conexao _context;
 
-        public FormacaoController(Conexao context)
+        public VagaController(Conexao context)
         {
             _context = context;
         }
 
-        // GET: Formacao
+        // GET: Vaga
         public async Task<IActionResult> Index()
         {
-            return View(await _context.formacao.ToListAsync());
+            return View(await _context.vaga.ToListAsync());
         }
 
-        // GET: Formacao/Details/5
+        // GET: Vaga/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +33,39 @@ namespace Colore.Models
                 return NotFound();
             }
 
-            var formacao = await _context.formacao
+            var vaga = await _context.vaga
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (formacao == null)
+            if (vaga == null)
             {
                 return NotFound();
             }
 
-            return View(formacao);
+            return View(vaga);
         }
 
-        // GET: Formacao/Create
+        // GET: Vaga/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Formacao/Create
+        // POST: Vaga/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,titulo,nivel,instituicao,inicio,fim,imagemDiploma")] Formacao formacao)
+        public async Task<IActionResult> Create([Bind("id,titulo,cargo,salario,descricao,beneficios,dataFinalInscricao")] Vaga vaga)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(formacao);
+                _context.Add(vaga);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(formacao);
+            return View(vaga);
         }
 
-        // GET: Formacao/Edit/5
+        // GET: Vaga/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +73,22 @@ namespace Colore.Models
                 return NotFound();
             }
 
-            var formacao = await _context.formacao.FindAsync(id);
-            if (formacao == null)
+            var vaga = await _context.vaga.FindAsync(id);
+            if (vaga == null)
             {
                 return NotFound();
             }
-            return View(formacao);
+            return View(vaga);
         }
 
-        // POST: Formacao/Edit/5
+        // POST: Vaga/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,nivel,instituicao,inicio,fim,imagemDiploma")] Formacao formacao)
+        public async Task<IActionResult> Edit(int id, [Bind("id,titulo,cargo,salario,descricao,beneficios,dataFinalInscricao")] Vaga vaga)
         {
-            if (id != formacao.id)
+            if (id != vaga.id)
             {
                 return NotFound();
             }
@@ -96,12 +97,12 @@ namespace Colore.Models
             {
                 try
                 {
-                    _context.Update(formacao);
+                    _context.Update(vaga);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FormacaoExists(formacao.id))
+                    if (!VagaExists(vaga.id))
                     {
                         return NotFound();
                     }
@@ -112,10 +113,10 @@ namespace Colore.Models
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(formacao);
+            return View(vaga);
         }
 
-        // GET: Formacao/Delete/5
+        // GET: Vaga/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,30 +124,30 @@ namespace Colore.Models
                 return NotFound();
             }
 
-            var formacao = await _context.formacao
+            var vaga = await _context.vaga
                 .FirstOrDefaultAsync(m => m.id == id);
-            if (formacao == null)
+            if (vaga == null)
             {
                 return NotFound();
             }
 
-            return View(formacao);
+            return View(vaga);
         }
 
-        // POST: Formacao/Delete/5
+        // POST: Vaga/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var formacao = await _context.formacao.FindAsync(id);
-            _context.formacao.Remove(formacao);
+            var vaga = await _context.vaga.FindAsync(id);
+            _context.vaga.Remove(vaga);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool FormacaoExists(int id)
+        private bool VagaExists(int id)
         {
-            return _context.formacao.Any(e => e.id == id);
+            return _context.vaga.Any(e => e.id == id);
         }
     }
 }
