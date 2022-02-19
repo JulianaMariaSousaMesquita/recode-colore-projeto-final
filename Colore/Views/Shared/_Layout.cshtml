@@ -90,11 +90,83 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Colore - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="bg-dark text-white pt-5 pb-4">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+
+                <!---Apresentação---->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Colore</h5>
+                    <p>Colore é uma organização que visa disseminar a diversidade dentro das empresas, permitindo o pioneirismo das mesmas no desenvolvimento social, incluindo pessoas LGBTQIA +</p>
+                </div>
+                <!----Fim apresentação--->
+
+                <!----Nossos Serviços (Esquerda)--->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Nossos Serviços</h5>
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" asp-area="" asp-controller="Home" asp-action="Privacy"> Confira a política de privacidade</a>
+                    </p>
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" asp-area="" asp-controller="Home" asp-action="Curriculo">Envie Seu Currículo</a>
+                    </p>
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" asp-area="" asp-controller="Vagas" asp-action="Index">Confira nossas Vagas</a>
+                    </p>                    
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" id="register" asp-controller="Acessos" asp-page="Create">Cadastre sua empresa</a>
+                    </p>
+                </div>
+                <!---Fim (Nossos serviços a esquerda)---->
+
+                <!----Nossos Serviços a Direita--->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Outros</h5>
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" id="register" asp-controller="Acessos" asp-page="Create">Cadastro</a>
+                    </p>
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" asp-area="" asp-controller="Home" asp-action="Sobre">Conheça nosso trabalho</a>
+                    </p>
+                    <p>
+                        <a class="nav-link text-white" style="text-decoration: none;" id="login" asp-controller="Acessos" asp-page="Login">Faça Login</a>
+                    </p>
+                </div>
+                <!----Fim (Nossos serviços a Direita)--->
+
+                <!----Entre em contato---->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning"> <a class="nav-link text-white" style="text-decoration: none;" id="login" asp-controller="Home" asp-page="Contato">Entre em contato conosco</a></></h5>
+                    <p>
+                        <i class="fas fa-home mr-3"></i>São Paulo, 14015-040, Brazil
+                    </p>
+                    <p>
+                        <i class="fas fa-envelope mr-3"></i>E-mail: colore@gmail.com
+                    </p>
+                    <p>
+                        <i class="fas fa-phone mr-3"></i>Número: +11 4002-8922
+                    </p>
+                </div>
+                <!----Fim(Entre em contato)---->
+            </div>
+
+
+            <!----Direitos Reservados---->
+            <hr class="mb-4">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-lg-8">
+                    <p>
+                        Copyright ©2022 Todos Os Direitos Reservados
+                        <a href="#" style="text-decoration: none;">
+                            <strong class="text-warning">Colore</strong>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <!----Fim (Direitos Reservados)---->
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
