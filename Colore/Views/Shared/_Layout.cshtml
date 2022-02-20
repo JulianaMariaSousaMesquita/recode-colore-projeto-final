@@ -1,12 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8" />
+<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Colore</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Colore.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Contato.css" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -15,29 +15,12 @@
             <div class="container-fluid">
                 <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">  
-                    @{bool logado = false;}   
-                    @if (logado){
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="curriculo" asp-action="Curriculo">Curriculo</a>
-                             </li>
-                            <li class="nav-item">
-                                <a id="manage" class="nav-link" asp-area="Identity" asp-controller="Acesso" title="Manage">Olá, Usuario.nome !</a>
+                        <li class="nav-item">
+                                <a class="nav-link " id="register" asp-controller="Acesso" asp-action="CreateUsuario">Cadastro</a>
                             </li>
                             <li class="nav-item">
-                                <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Acesso/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-                                    <button id="logout" type="submit" class="nav-link btn btn-link">Sair</button>
-                                </form>
+                                <a class="nav-link " id="login"  asp-controller="Acesso" asp-action="Login">Login</a>
                             </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link " id="register" asp-controller="Acesso" asp-page="Create">Cadastro</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " id="login"  asp-controller="Acesso" asp-page="Login">Login</a>
-                            </li>
-                        }
                      </ul>
                 </div>
             </div>
@@ -58,7 +41,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Vaga" asp-action="Index">Vagas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Empresa" asp-action="Index">Empresas</a>
+                            <a class="nav-link" asp-area="" asp-controller="Acesso" asp-action="Empresas">Empresas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Sobre">Sobre</a>
@@ -72,14 +55,14 @@
             <!-----Fim dos Items----->
 
             <!-----Redes Sociais----->
-            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul class="navbar-nav ms-auto">
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">                
                     <div class="social-part">
-                        <a href="#"><img src="~/images/facebook.png" class="img-thumbnail"></a>
-                        <a href="#"><img src="~/images/instagram.png" class="img-thumbnail"></a>
-                        <a href="#"><img src="~/images/twitter.png" class="img-thumbnail"></a>
-                    </div>
-                </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <img src="~/images/facebook.png" class="img-thumbnail">
+                            <img src="~/images/instagram.png" class="img-thumbnail">
+                            <img src="~/images/twitter.png" class="img-thumbnail">
+                        </ul>
+                    </div>                
             </div>
             <!-----Fim Redes Sociais----->
         </nav>
@@ -114,7 +97,7 @@
                         <a class="nav-link text-white" style="text-decoration: none;" asp-area="" asp-controller="Vagas" asp-action="Index">Confira nossas Vagas</a>
                     </p>                    
                     <p>
-                        <a class="nav-link text-white" style="text-decoration: none;" id="register" asp-controller="Acessos" asp-page="Create">Cadastre sua empresa</a>
+                        <a class="nav-link text-white" style="text-decoration: none;" id="register" asp-controller="Acessos" asp-action="Create">Cadastre sua empresa</a>
                     </p>
                 </div>
                 <!---Fim (Nossos serviços a esquerda)---->
@@ -123,20 +106,20 @@
                 <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Outros</h5>
                     <p>
-                        <a class="nav-link text-white" style="text-decoration: none;" id="register" asp-controller="Acessos" asp-page="Create">Cadastro</a>
+                        <a class="nav-link text-white" style="text-decoration: none;" id="register" asp-controller="Acessos" asp-action="Create">Cadastro</a>
                     </p>
                     <p>
                         <a class="nav-link text-white" style="text-decoration: none;" asp-area="" asp-controller="Home" asp-action="Sobre">Conheça nosso trabalho</a>
                     </p>
                     <p>
-                        <a class="nav-link text-white" style="text-decoration: none;" id="login" asp-controller="Acessos" asp-page="Login">Faça Login</a>
+                        <a class="nav-link text-white" style="text-decoration: none;" id="login" asp-controller="Acessos" asp-action="Login">Faça Login</a>
                     </p>
                 </div>
                 <!----Fim (Nossos serviços a Direita)--->
 
                 <!----Entre em contato---->
                 <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
-                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning"> <a class="nav-link text-white" style="text-decoration: none;" id="login" asp-controller="Home" asp-page="Contato">Entre em contato conosco</a></></h5>
+                    <h5 class="text-uppercase mb-4 font-weight-bold text-warning"> <a class="nav-link text-white" style="text-decoration: none;" id="login" asp-controller="Home" asp-action="Contato">Entre em contato conosco</a></></h5>
                     <p>
                         <i class="fas fa-home mr-3"></i>São Paulo, 14015-040, Brazil
                     </p>
@@ -157,7 +140,7 @@
                 <div class="col-md-7 col-lg-8">
                     <p>
                         Copyright ©2022 Todos Os Direitos Reservados
-                        <a href="#" style="text-decoration: none;">
+                        <a style="text-decoration: none;" asp-controller="Home" asp-action="Index">
                             <strong class="text-warning">Colore</strong>
                         </a>
                     </p>

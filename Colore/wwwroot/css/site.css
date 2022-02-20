@@ -1,18 +1,180 @@
+:root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+
+div {
+    margin: 1px;
+    padding: 2px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+
+    .login {
+        position: absolute;
+        top: 200px;
+        left: 700px;
+    }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+-div {
+    border: solid blue;
+}
+
+.social {
+    border: solid thin #ced4da;
+}
+
+    .social:hover {
+        background-image: linear-gradient(to bottom right, #EA3C4A, #FEA432, #FFE431);
+        box-shadow: 5px 5px 5px #495057;
+    }
+
+
+
+.icon {
+    width: 30px;
+    border-radius: 50%;
+}
+
+    .icon:hover {
+        background-image: linear-gradient(to bottom right, #00FFFF, #6725AE);
+        text-decoration: none;
+    }
+
+.homeCard {
+    background-image: url(https://ps.w.org/bp-job-manager/assets/icon-256x256.png?rev=2353423);
+    border-radius: 10px;
+}
+
+/* Estilo Index Empresas*/
+
+.glyphicon {
+    margin-right: 5px;
+}
+
+.thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+    .item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+        background: #428bca;
+    }
+
+    .item.list-group-item .list-group-image {
+        margin-right: 10px;
+    }
+
+    .item.list-group-item .thumbnail {
+        margin-bottom: 0px;
+    }
+
+    .item.list-group-item .caption {
+        padding: 9px 9px 0px 9px;
+    }
+
+    .item.list-group-item:nth-of-type(odd) {
+        background: #eeeeee;
+    }
+
+    .item.list-group-item:before, .item.list-group-item:after {
+        display: table;
+        content: " ";
+    }
+
+    .item.list-group-item img {
+        float: left;
+    }
+
+    .item.list-group-item:after {
+        clear: both;
+    }
+
+.list-group-item-text {
+    margin: 0 0 11px;
+}
+
+.nav-item {
+    border-bottom-color: red;
+    color: blue;
+}
+/*REGISTER/LOGIN CSS*/
+.register-cont {
+    margin-bottom: 20px;
+    background-color: #212529;
+    border-radius: 20px;
+}
+
+    .register-cont h2 {
+        margin-top: 10px;
+        color: #FFD231;
+        text-align: center;
+    }
+
+.register-options p {
+    margin-top: -15px;
+}
+
+.register-options a {
+    color: #FFD231;
+    text-decoration: none;
+}
+
+.register-but {
+    margin-bottom: 10px;
+}
+/*Fim REGISTRO/LOGIN*/
+
+/*PAINEL CSS*/
+
+.bg-img img {
+    width: 50%;
+    margin-bottom: 30px;
+}
+
+.curriculo.but {
+    margin-top: 50px;
+}
+
+.alinhamento, .botao {
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+    .botao a {
+        text-decoration: none;
+        color: white;
+    }
+
+.mae-2 {
+    background-color: #273339;
+    border-radius: 20px;
 }
