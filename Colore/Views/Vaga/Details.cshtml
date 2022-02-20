@@ -1,54 +1,42 @@
 ﻿@model Colore.Models.Vaga
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes " + @Model.titulo;
 }
+<section> 
+<div class="standardBG d-flex">
+    <div class="col-6">
+       <img class="card-img-top" src="~/images/vagas/@(Model?.id).png" alt="@Model.titulo">
+    </div>
+    <div class="col-6">
+        <h1>@Html.DisplayFor(model => model.titulo)</h1>
+        <br />
+        <h4 class="card-title"> Área de atuação:<br />@Html.DisplayFor(model => model.requisitos.area)</h4>
+        <hr />
+        <h4 class="card-title"> Salário: R$@Html.DisplayFor(model => model.salario)</h4>
+    </div>
+</div>
 
-<h1>Details</h1>
-
-<div>
-    <h4>Vaga</h4>
+<div class="d-flex justify-content-around">
+    <div class="col-6">
+    <h5 class="text-center">Descrição da vaga</h5>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.titulo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.titulo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.cargo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.cargo)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.salario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.salario)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.descricao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.descricao)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.beneficios)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.beneficios)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.dataFinalInscricao)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.dataFinalInscricao)
-        </dd>
-    </dl>
+    <p class="card-text">@Html.DisplayFor(model => model.descricao)</p>
+    <button class="btn btn-primary mt-3">Candidate-se</button>
+    </div>
+    
+    <div class="col-4">
+        <h5 class="text-center">Requisitos</h5>
+        <hr />
+        <p class="card-text"> Escolaridade Exigida: @Html.DisplayFor(model => model.requisitos.escolaridade)</p>
+        <p class="card-text"> Experiência de trabalho Exigida: @Html.DisplayFor(model => model.requisitos.experiencia) anos</p>
+        <p class="card-text"> Idiomas desejáveis: @Html.DisplayFor(model => model.requisitos.idiomas)</p>
+        <h5 class="text-center">Benefícios</h5>
+        <hr />
+        <p class="card-text">@Html.DisplayFor(model => model.beneficios)</p>
+    </div>
+   
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+ <hr />
+
+</section>
