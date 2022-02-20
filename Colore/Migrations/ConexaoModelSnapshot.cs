@@ -83,6 +83,9 @@ namespace Colore.Migrations
                         .HasMaxLength(16)
                         .HasColumnType("nvarchar(16)");
 
+                    b.Property<int?>("empresaid")
+                        .HasColumnType("int");
+
                     b.Property<string>("imagem")
                         .HasColumnType("nvarchar(max)");
 
@@ -91,7 +94,14 @@ namespace Colore.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
+                    b.Property<int?>("usuarioid")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
+
+                    b.HasIndex("empresaid");
+
+                    b.HasIndex("usuarioid");
 
                     b.ToTable("Acessos");
                 });
@@ -321,6 +331,21 @@ namespace Colore.Migrations
                         .IsRequired();
 
                     b.Navigation("curriculo");
+                });
+
+            modelBuilder.Entity("Colore.Models.Acessos", b =>
+                {
+                    b.HasOne("Acessos.Empresa.Empresa", "empresa")
+                        .WithMany()
+                        .HasForeignKey("empresaid");
+
+                    b.HasOne("Acessos.Usuario.Usuario", "usuario")
+                        .WithMany()
+                        .HasForeignKey("usuarioid");
+
+                    b.Navigation("empresa");
+
+                    b.Navigation("usuario");
                 });
 
             modelBuilder.Entity("Colore.Models.Curriculo", b =>

@@ -10,21 +10,6 @@ namespace Colore.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Acessos",
-                columns: table => new
-                {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    email = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
-                    senha = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    imagem = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Acessos", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Endereco",
                 columns: table => new
                 {
@@ -153,6 +138,33 @@ namespace Colore.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Acessos",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    email = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
+                    senha = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    imagem = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    usuarioid = table.Column<int>(type: "int", nullable: true),
+                    empresaid = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Acessos", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_Acessos_Empresa_empresaid",
+                        column: x => x.empresaid,
+                        principalTable: "Empresa",
+                        principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK_Acessos_Usuario_usuarioid",
+                        column: x => x.usuarioid,
+                        principalTable: "Usuario",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vaga",
                 columns: table => new
                 {
@@ -189,6 +201,16 @@ namespace Colore.Migrations
                         principalTable: "Usuario",
                         principalColumn: "id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Acessos_empresaid",
+                table: "Acessos",
+                column: "empresaid");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Acessos_usuarioid",
+                table: "Acessos",
+                column: "usuarioid");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Curriculo_enderecoid",

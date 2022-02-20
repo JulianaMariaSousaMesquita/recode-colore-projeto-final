@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Colore.Models;
-using Acessos.Empresa;
 using Acessos.Usuario;
+using Acessos.Empresa;
 
 namespace Colore.Controllers
 {
@@ -51,36 +51,6 @@ namespace Colore.Controllers
             return View();
         }
 
-        // POST: Acessos/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateEmpresa([Bind("id,email,senha,imagem,titulo,telefone,cnpj,endereco")] Empresa acessos)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(acessos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(acessos);
-        }
-
-        // POST: Acessos/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateUsuario([Bind("id,email,senha,imagem")] Usuario acessos)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(acessos);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(acessos);
-        }
-
         // GET: Acessos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -96,7 +66,6 @@ namespace Colore.Controllers
             }
             return View(acessos);
         }
-
 
         // GET: Acessos/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -131,6 +100,7 @@ namespace Colore.Controllers
         {
             return _context.acesso.Any(e => e.id == id);
         }
+
         //***************************       Usuario           ***************************
         // GET: Usuario
         public async Task<IActionResult> Usuario()

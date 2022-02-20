@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Acessos.Empresa;
+using Acessos.Usuario;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Colore.Models
@@ -17,5 +19,8 @@ namespace Colore.Models
         [DataType(DataType.Password)]
         public string senha { get; set; }     
         public string? imagem { get; set; }
+        public Usuario? usuario { get; set; }
+        public Empresa? empresa { get; set; }
     }
-}
+
+ }
