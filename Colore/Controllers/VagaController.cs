@@ -25,6 +25,23 @@ namespace Colore.Controllers
             return View(await _context.vaga.ToListAsync());
         }
 
+        /// GET: Vaga/Vagas
+        public async Task<IActionResult> Vagas()
+        {
+            return View(await _context.vaga.ToListAsync());
+        }
+
+        public IActionResult Index(string busca)
+        {
+            var vagas = from s in _context.vaga select s;
+
+            if (!String.IsNullOrEmpty(busca))
+            {
+                vagas = vagas.Where(s => s.requisitos.area.ToUpper().Contains(busca.ToUpper()) || s.requisitos.escolaridade.ToUpper().Contains(busca.ToUpper()));
+            }
+            return View(vagas);
+        }
+
         // GET: Vaga/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -48,7 +65,7 @@ namespace Colore.Controllers
         {
             return View();
         }
-
+        
         // POST: Vaga/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
